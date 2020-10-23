@@ -21,7 +21,7 @@ class UserController < ApplicationController
 
 
 
-    user_params[:url] = valid_email
+    user_params[:email] = valid_email
 
     @user = User.new(user_params)
 

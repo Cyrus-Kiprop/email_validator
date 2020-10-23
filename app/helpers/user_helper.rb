@@ -12,6 +12,7 @@ module UserHelper
 
   # validate the data
   def checkData(data)
+    p data
     return true if data[:format_valid] &&
       data[:mx_found] &&
       data[:smtp_check] &&
