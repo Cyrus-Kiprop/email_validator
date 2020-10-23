@@ -12,8 +12,14 @@ module UserHelper
 
   # validate the data
   def checkData(data)
-    p data
-    return true if data[:format_valid] &&
+
+    #  p data[:format_valid]
+    # p data[:mx_found]
+    #   p data[:smtp_check]
+    #   p !data[:catch_all]
+
+    return true if
+     data[:format_valid] &&
       data[:mx_found] &&
       data[:smtp_check] &&
       !data[:catch_all]
@@ -21,6 +27,9 @@ module UserHelper
   end
   # create anc check usernames
   def getNames(f, l, e)
+    p f
+    p l
+    p e
      arr = [];
     arr.push("#{f}.#{l}@#{e}");
     arr.push("#{f}@#{e}");
