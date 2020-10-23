@@ -1,0 +1,45 @@
+<div class="app">
+  <%= simple_form_for(@user, as: :user, method: :post, url: user_create_url) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <%= f.input :first_name,
+        required: true,
+        autofocus: true,
+        placeholder: 'last_name',
+        input_html: { autocomplete: "First Name" }%>
+      <%= f.input :last_name,
+        required: true,
+        autofocus: true,
+        placeholder: 'last_name',
+        input_html: { autocomplete: "Last Name" }%>
+      <%= f.input :url,
+      required: true,
+      autofocus: true,
+      placeholder: 'url',
+      input_html: { autocomplete: "url" }%>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Sign up", class: 'btn btn-info' %>
+    </div>
+  <% end %>
+
+  <h2> Valid emails</h2>
+  <table class="user-table">
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Url</th>
+      <th>Email</th>
+    </tr>
+    <% @users&.each_with_index do |user, index| %>
+      <tr>
+        <td><%= user.first_name %>
+        <td><%= user.last_name %></td>
+        <td><%= user.url %></td>
+        <td><%= user.url %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

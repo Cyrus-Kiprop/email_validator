@@ -1,0 +1,36 @@
+// Place all the styles related to the user controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+//
+.app {
+  display: flex;
+  flex-direction:column;
+  align-items:center;
+  padding-top: 7rem;
+
+  form {
+    display: flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+    width: 100%;
+
+    .form-inputs {
+      display: flex;
+      border: 1px solid black;
+    }
+    input {
+      padding: .7rem 0;
+    }
+    label {
+      display: none;
+    }
+    .btn-info {
+      background-color: black;
+      text-transform:uppercase;
+      width:6rem;
+      color: whitesmoke;
+    }
+  }
+}
+
