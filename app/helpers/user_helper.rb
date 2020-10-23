@@ -1,7 +1,6 @@
+
 require 'rest-client'
-
 module UserHelper
-
   def validator (f,l,u)
     fname = f.downcase()
     lname = l.downcase()
@@ -12,41 +11,25 @@ module UserHelper
 
   # validate the data
   def checkData(data)
-
-    #  p data[:format_valid]
-    # p data[:mx_found]
-    #   p data[:smtp_check]
-    #   p !data[:catch_all]
-
-    return true if
-     data[:format_valid] &&
-      data[:mx_found] &&
-      data[:smtp_check] &&
-      !data[:catch_all]
-    return false
+    return (data['format_valid'] && data['mx_found'] && data['smtp_check'] && !data['catch_all'])
   end
+
   # create anc check usernames
   def getNames(f, l, e)
-    p f
-    p l
-    p e
-     arr = [];
-    arr.push("#{f}.#{l}@#{e}");
-    arr.push("#{f}@#{e}");
-    arr.push("#{f}#{l}@#{e}");
-    arr.push("#{l}.#{f}@#{e}");
-    arr.push("#{f[0]}.#{l}@#{e}");
-    arr.push("#{f[0]}.#{l[0]}@#{e}");
+     arr = []
+    arr << ("#{f}.#{l}@#{e}")
+    arr << ("#{f}@#{e}")
+    arr << ("#{f}#{l}@#{e}")
+    arr << ("#{l}.#{f}@#{e}")
+    arr << ("#{f[0]}.#{l}@#{e}")
+    arr << ("#{f[0]}.#{l[0]}@#{e}")
+
     results = nil
     arr.each do |i|
-      request = RestClient.get("http://apilayer.net/api/check?access_key=8958e54d32b824916adaddf25882d661&email=#{i}&smtp=1&format=1")
-
+      request = RestClient.get("http://apilayer.net/api/check?access_key=05cace55c2a7e31c610c7efed4098de8&email=#{i}&smtp=1&format=1")
       check = checkData(JSON.parse(request))
-      if(check)
-        results = JSON.parse(request);
-        break;
-      end
+      results = JSON.parse(request) if check
+      return results['email']  if results
     end
-    return results.nil? ? false : result[:email] ;
   end
 end
