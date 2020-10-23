@@ -1,26 +1,25 @@
 class UserController < ApplicationController
   include UserHelper
   def index
+
+    # create  a new instance of the user
     @user = User.new
+
+    #fetch all the user in the DB
     @users = User.all
   end
 
   def create
-
+    # return a valid email address or a false value if all the condition aren't satisfied
     valid_email = validator(user_params['first_name'], user_params['last_name'], user_params['url'])
-
-    p 'this is the valid email'
-
-    p valid_email
 
     if !valid_email
       flash[alert] = 'Please choose another url'
-      redirect_to :user_index, notice: 'Error  created.'
+      redirect_to :user_index, notice: 'Error while generating a valid email.'
       return
     end
 
-
-
+    # update the user email with a valid email address
     user_params[:email] = valid_email
 
     @user = User.new(user_params)
