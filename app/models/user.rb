@@ -9,5 +9,5 @@ class User < ApplicationRecord
 
   validates_length_of :email, maximum: 255
 
-  validates :email, uniqueness: { scope: :id }
+  validates :email, uniqueness: true
 end

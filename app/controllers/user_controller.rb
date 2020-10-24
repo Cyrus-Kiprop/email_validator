@@ -26,8 +26,8 @@ class UserController < ApplicationController
       if @user.save
         format.html { redirect_to :user_index, notice: 'User was successfully created.' }
       else
-        flash[notice] = 'Internal server Error'
-        format.html { render :index }
+        flash[notice] = @user.errors.full_messages[0]
+        format.html { redirect_to :user_index }
       end
     end
   end

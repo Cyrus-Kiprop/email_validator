@@ -30,5 +30,6 @@ module UserHelper
       results = JSON.parse(request) if check
       return results['email'] if results
     end
+    false
   end
 end
