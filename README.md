@@ -6,7 +6,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-    <img src="images/microverse-logo.jpg" alt="Logo" width="80" height="80">
+    <img src="./logo.png" alt="Logo" width="80" height="80">
 
   <h3 align="center">A Valid Email Generator</h3>
 
@@ -75,8 +75,9 @@ Front-End(client)
 Testing Frameworks
 ```
 
-- [Capybara](https://github.com/teamcapybara/capybara)
+- shoulda_matchers
 - [RSpec](https://rspec.info/)
+- Factories gem
 
 <!-- GETTING STARTED -->
 
