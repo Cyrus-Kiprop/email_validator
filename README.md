@@ -12,11 +12,11 @@
 
   <p align="center">
     <br />
-    <a href="https://afritrend.herokuapp.com/users/sign_in">View Demo</a>
+    <a href="https://https://pacific-stream-82359.herokuapp.com/">View Demo</a>
     ·
-    <a href="https://github.com/Cyrus-Kiprop/afriTrend/issues">Report Bug</a>
+    <a href="https://github.com/Cyrus-Kiprop/email_validator/issues">Report Bug</a>
     ·
-    <a href="https://github.com/Cyrus-Kiprop/afriTrend/issues">Request Feature</a>
+    <a href="https://github.com/Cyrus-Kiprop/email_validator/issues">Request Feature</a>
   </p>
 </p>
 
@@ -47,7 +47,7 @@ A ruby on Rails application that lets users find valid email addresses based on 
 
 ## Live Demo
 
-Click [ here ](https://em.herokuapp.com/users/sign_in) for a live demo of the app.
+Click [ here ](https://https://pacific-stream-82359.herokuapp.com/) for a live demo of the app.
 
 ### Built With
 
