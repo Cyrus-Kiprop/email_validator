@@ -57,7 +57,7 @@ The project was built using the following languages stacks:
 Back-End(server)
 ```
 
-- [Ruby -v 2.7.1](https://ruby-doc.org/)
+- [Ruby -v 2.7.2](https://ruby-doc.org/)
 - [Ruby on Rails -v 5.2+](https://rubyonrails.org/)
 
 ```sh

@@ -12,7 +12,7 @@ class UserController < ApplicationController
     # return a valid email address or a false value if all the condition aren't satisfied
     valid_email = validator(user_params[:first_name], user_params[:last_name], user_params[:url])
 
-    if !valid_email
+    unless valid_email
       flash[alert] = 'Please choose another url'
       redirect_to :user_index, notice: 'Error while generating a valid email.'
       return

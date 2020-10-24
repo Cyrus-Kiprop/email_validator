@@ -24,8 +24,8 @@ module UserHelper
     arr << ("#{f[0]}.#{l[0]}@#{e}")
 
     results = nil
-    arr.each do |i|
-      request = RestClient.get("http://apilayer.net/api/check?access_key=05cace55c2a7e31c610c7efed4098de8&email=#{i}&smtp=1&format=1")
+    arr.each do |email|
+      request = RestClient.get("http://apilayer.net/api/check?access_key=#{ENV['API_KEY']}&email=#{email}&smtp=1&format=1")
       check = checkData(JSON.parse(request))
       results = JSON.parse(request) if check
       return results['email'] if results
