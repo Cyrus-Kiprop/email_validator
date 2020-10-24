@@ -10,6 +10,8 @@
 
   <h3 align="center">A Valid Email Generator</h3>
 
+![](./app.png)
+
   <p align="center">
     <br />
     <a href="https://pacific-stream-82359.herokuapp.com/">View Demo</a>
@@ -126,6 +128,22 @@ rails db:create
 rails db:migrate
 ```
 
+### SETUP API_KEY
+
+Create an env.yml file in ./config directory of the app
+
+```JS
+touch env.yml
+```
+
+Add the following content to the file
+
+```JS
+API_KEY: 'your api access key'
+```
+
+:red_heart: :blue_heart: :green_heart:
+
 <!-- USAGE EXAMPLES -->
 
 ## Usage
@@ -198,4 +216,4 @@ Distributed under the MIT License. See [ LICENSE ](https://github.com/Cyrus-Kipr
 [stars-url]: https://github.com/Cyrus-Kiprop/email_validator/stargazers
 [issues-shield]: https://img.shields.io/github/issues/Cyrus-Kiprop/email_validator.svg?style=flat-square
 [issues-url]: https://github.com/Cyrus-Kiprop/email_validator/issues
-[product-screenshot]: /app/assets/images/screenshot.png
+[product-screenshot]: ./aapp.png
