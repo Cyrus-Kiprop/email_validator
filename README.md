@@ -12,7 +12,7 @@
 
   <p align="center">
     <br />
-    <a href="https://https://pacific-stream-82359.herokuapp.com/">View Demo</a>
+    <a href="https://pacific-stream-82359.herokuapp.com/">View Demo</a>
     ·
     <a href="https://github.com/Cyrus-Kiprop/email_validator/issues">Report Bug</a>
     ·
