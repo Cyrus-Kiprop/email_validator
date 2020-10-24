@@ -1,11 +1,10 @@
 class UserController < ApplicationController
   include UserHelper
   def index
-
     # create  a new instance of the user
     @user = User.new
 
-    #fetch all the user in the DB
+    # fetch all the user in the DB
     @users = User.all
   end
 
@@ -23,18 +22,19 @@ class UserController < ApplicationController
     @user = User.new(user_params)
     @user.email = valid_email
 
-  respond_to do |format|
-       if @user.save
-         format.html { redirect_to :user_index, notice: 'User was successfully created.' }
-       else
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to :user_index, notice: 'User was successfully created.' }
+      else
         flash[notice] = 'Internal server Error'
-         format.html { render :index }
-       end
-     end
+        format.html { render :index }
+      end
+    end
   end
 
   private
- # Only allow a list of trusted parameters through.
+
+  # Only allow a list of trusted parameters through.
   def user_params
     params.require(:user).permit(:first_name, :last_name, :url)
   end

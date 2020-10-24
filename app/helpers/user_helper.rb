@@ -1,7 +1,6 @@
-
 require 'rest-client'
 module UserHelper
-  def validator (f,l,u)
+  def validator(f, l, u)
     fname = f.downcase()
     lname = l.downcase()
     link = u.downcase()
@@ -16,7 +15,7 @@ module UserHelper
 
   # create anc check usernames
   def getNames(f, l, e)
-     arr = []
+    arr = []
     arr << ("#{f}.#{l}@#{e}")
     arr << ("#{f}@#{e}")
     arr << ("#{f}#{l}@#{e}")
@@ -29,7 +28,7 @@ module UserHelper
       request = RestClient.get("http://apilayer.net/api/check?access_key=05cace55c2a7e31c610c7efed4098de8&email=#{i}&smtp=1&format=1")
       check = checkData(JSON.parse(request))
       results = JSON.parse(request) if check
-      return results['email']  if results
+      return results['email'] if results
     end
   end
 end
