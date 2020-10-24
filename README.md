@@ -47,7 +47,7 @@ A ruby on Rails application that lets users find valid email addresses based on 
 
 ## Live Demo
 
-Click [ here ](https://https://pacific-stream-82359.herokuapp.com/) for a live demo of the app.
+Click [ here ](https://pacific-stream-82359.herokuapp.com/) for a live demo of the app.
 
 ### Built With
 
