@@ -9,9 +9,7 @@ module UserHelper
     return (data['format_valid'] && data['mx_found'] && data['smtp_check'] && !data['catch_all'])
   end
 
-  # create anc check usernames
-  def get_names(fname, lname, url)
-    results = nil
+  def comb_gen(fname, lname, url)
     arr = []
     arr << ("#{fname}.#{lname}@#{url}")
     arr << ("#{fname}@#{url}")
@@ -19,6 +17,13 @@ module UserHelper
     arr << ("#{lname}.#{fname}@#{url}")
     arr << ("#{fname[0]}.#{lname}@#{url}")
     arr << ("#{fname[0]}.#{lname[0]}@#{url}")
+    arr
+  end
+
+  # create anc check usernames
+  def get_names(fname, lname, url)
+    results = nil
+    arr = comb_gen(fname, lname,  url)
 
     arr.each do |email|
       request = RestClient.get("http://apilayer.net/api/check?access_key=#{ENV['API_KEY']}&email=#{email}&smtp=1&format=1")
@@ -47,6 +52,6 @@ module UserHelper
   end
 
   def check_error(result)
-    result.class  == Hash
+    result.class == Hash
   end
 end
