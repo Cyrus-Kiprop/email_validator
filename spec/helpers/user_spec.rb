@@ -81,7 +81,7 @@ RSpec.describe 'User Helper', type: :helper do
   end
 
 
-  describe "Valid email checke" do
+  describe "Valid email checker" do
     it 'should return true if all the condition of a valid email are passed' do
       expect(@helper_class.check_data?(response)).to eq true
     end
@@ -91,4 +91,21 @@ RSpec.describe 'User Helper', type: :helper do
     end
   end
 
+  describe "External API request" do
+    let(:email_response) {JSON.parse(@helper_class.api_request('ben@8returns.com')) }
+    it "returns correctly some data" do
+      expect(email_response).to be_kind_of(Hash)
+      expect(email_response).to have_key('email')
+      expect(email_response).to have_key('did_you_mean')
+      expect(email_response).to have_key('user')
+      expect(email_response).to have_key('format_valid')
+      expect(email_response).to have_key('domain')
+      expect(email_response).to have_key('mx_found')
+      expect(email_response).to have_key('catch_all')
+      expect(email_response).to have_key('role')
+      expect(email_response).to have_key('disposable')
+      expect(email_response).to have_key('free')
+      expect(email_response).to have_key('score')
+    end
+  end
 end

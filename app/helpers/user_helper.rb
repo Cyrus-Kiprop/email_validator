@@ -21,13 +21,17 @@ module UserHelper
     arr
   end
 
+  def api_request(email)
+RestClient.get("http://apilayer.net/api/check?access_key=#{ENV['API_KEY']}&email=#{email}&smtp=1&format=1")
+  end
+
   # create anc check usernames
   def get_names(fname, lname, url)
     results = nil
     arr = comb_gen(fname, lname,  url)
 
     arr.each do |email|
-      request = RestClient.get("http://apilayer.net/api/check?access_key=#{ENV['API_KEY']}&email=#{email}&smtp=1&format=1")
+      request = api_request(email)
 
       parsed_request = JSON.parse(request)
 
