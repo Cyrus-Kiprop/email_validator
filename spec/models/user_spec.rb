@@ -15,5 +15,4 @@ RSpec.describe User, type: :model do
   it do
     should validate_uniqueness_of(:email).ignoring_case_sensitivity
   end
-
 end
