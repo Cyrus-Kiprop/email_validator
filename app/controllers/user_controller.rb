@@ -9,10 +9,17 @@ class UserController < ApplicationController
   end
 
   def create
-    # return a valid email address or a false value if all the condition aren't satisfied
-    valid_email = validator(user_params[:first_name], user_params[:last_name], user_params[:url])
+    response = validator(user_params[:first_name], user_params[:last_name], user_params[:url])
 
-    unless valid_email
+    # Handle any error from the the request
+    if check_error(response)
+      flash[alert] = response['info']
+      redirect_to :user_index
+      return
+    end
+
+    # handle case where no valid email was found
+    unless response
       flash[alert] = 'Please choose another url'
       redirect_to :user_index, notice: 'Error while generating a valid email.'
       return
@@ -20,7 +27,7 @@ class UserController < ApplicationController
 
     # update the user email with a valid email address
     @user = User.new(user_params)
-    @user.email = valid_email
+    @user.email = response
 
     respond_to do |format|
       if @user.save
