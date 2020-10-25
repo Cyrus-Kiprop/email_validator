@@ -45,7 +45,7 @@ RSpec.configure do |config|
     }
 
     my_request = stub_request(:any, "http://apilayer.net/api/check?access_key=#{ENV['API_KEY']}&email=ben@8returns.com&smtp=1&format=1")
-      my_request.to_return({body: valid_response.to_json })
+    my_request.to_return({ body: valid_response.to_json })
       .times(1)
       .then
       .to_return({ body: error_response.to_json })
