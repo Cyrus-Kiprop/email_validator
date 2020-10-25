@@ -6,9 +6,10 @@ module UserHelper
 
   # validate the data
   def check_data?(data)
-    return (data['format_valid'] && data['mx_found'] && data['smtp_check'] && !data['catch_all'])
+    data['format_valid'] && data['mx_found'] && data['smtp_check'] && !data['catch_all']
   end
 
+  # generate the email combination
   def comb_gen(fname, lname, url)
     arr = []
     arr << ("#{fname}.#{lname}@#{url}")
