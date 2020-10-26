@@ -13,12 +13,46 @@
 # it.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require 'webmock/rspec'
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
 
   config.mock_with :mocha
   # assertions if you prefer.
+
+  config.before(:each) do
+    valid_response = {
+      "email" => "support@apilayer.com",
+      "did_you_mean" => "",
+      "user" => "support",
+      "domain" => "apilayer.net",
+      "format_valid" => true,
+      "mx_found" => true,
+      "smtp_check" => true,
+      "catch_all" => false,
+      "role" => true,
+      "disposable" => false,
+      "free" => false,
+      "score" => 0.8
+    }
+
+    error_response = {
+      "success" => false,
+      "error" => {
+        "code" => 210,
+        "type" => "no_email_address_supplied",
+        "info" => "Please specify an email address. [Example: support@apilayer.com]"
+      }
+    }
+
+    my_request = stub_request(:any, "http://apilayer.net/api/check?access_key=#{ENV['API_KEY']}&email=ben@8returns.com&smtp=1&format=1")
+    my_request.to_return({ body: valid_response.to_json })
+      .times(1)
+      .then
+      .to_return({ body: error_response.to_json })
+  end
+
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`
     # and `failure_message` of custom matchers include text for helper methods

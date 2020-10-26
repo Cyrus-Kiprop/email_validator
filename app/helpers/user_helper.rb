@@ -6,12 +6,11 @@ module UserHelper
 
   # validate the data
   def check_data?(data)
-    return (data['format_valid'] && data['mx_found'] && data['smtp_check'] && !data['catch_all'])
+    data['format_valid'] && data['mx_found'] && data['smtp_check'] && !data['catch_all']
   end
 
-  # create anc check usernames
-  def get_names(fname, lname, url)
-    results = nil
+  # generate the email combination
+  def comb_gen(fname, lname, url)
     arr = []
     arr << ("#{fname}.#{lname}@#{url}")
     arr << ("#{fname}@#{url}")
@@ -19,9 +18,20 @@ module UserHelper
     arr << ("#{lname}.#{fname}@#{url}")
     arr << ("#{fname[0]}.#{lname}@#{url}")
     arr << ("#{fname[0]}.#{lname[0]}@#{url}")
+    arr
+  end
+
+  def api_request(email)
+    RestClient.get("http://apilayer.net/api/check?access_key=#{ENV['API_KEY']}&email=#{email}&smtp=1&format=1")
+  end
+
+  # create anc check usernames
+  def get_names(fname, lname, url)
+    results = nil
+    arr = comb_gen(fname, lname, url)
 
     arr.each do |email|
-      request = RestClient.get("http://apilayer.net/api/check?access_key=#{ENV['API_KEY']}&email=#{email}&smtp=1&format=1")
+      request = api_request(email)
 
       parsed_request = JSON.parse(request)
 
