@@ -65,8 +65,6 @@ Back-End(server)
 ```sh
 Front-End(client)
 ```
-
-- [Bootstrap v 4](https://getbootstrap.com)
 - [ERB](https://guides.rubyonrails.org/layouts_and_rendering.html)
 - [Sass](https://sass-lang.com/)
 - [Font Awesome Icons](https://fontawesome.com/icons?d=gallery)
@@ -185,7 +183,7 @@ Contributions are what make the open source community such an amazing place to b
 
 Cyrus Kiprop - cyruskiprop254@gmail.com
 
-Project Link: [https://github.com/Cyrus-Kiprop/afriTrend](https://github.com/Cyrus-Kiprop/afriTrend)
+Project Link: [https://github.com/Cyrus-Kiprop/email_validator](https://github.com/Cyrus-Kiprop/email_validator)
 
 ## Authors
 
@@ -197,7 +195,7 @@ Project Link: [https://github.com/Cyrus-Kiprop/afriTrend](https://github.com/Cyr
 
 ## Acknowledgements
 
-- [Heroku](https://afritrend.herokuapp.com)
+- [Heroku](https://pacific-stream-82359.herokuapp.com/)
 - [Font Awesome](https://fontawesome.com)
 - [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
 
@@ -205,7 +203,7 @@ Project Link: [https://github.com/Cyrus-Kiprop/afriTrend](https://github.com/Cyr
 
 ## License
 
-Distributed under the MIT License. See [ LICENSE ](https://github.com/Cyrus-Kiprop/afriTrend/blob/master/LICENSE) for more information.
+Distributed under the MIT License. See [ LICENSE ](https://github.com/Cyrus-Kiprop/email_validator/blob/master/LICENSE) for more information.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 
