@@ -1,5 +1,4 @@
 class UserController < ApplicationController
-  include UserHelper
   def index
     # create  a new instance of the user
     @user = User.new
@@ -9,40 +8,40 @@ class UserController < ApplicationController
   end
 
   def create
-    response = validator(user_params[:first_name], user_params[:last_name], user_params[:url])
 
-    # Handle any error from the the request
-    if check_error(response)
-      flash[alert] = response['info']
-      redirect_to :user_index
-      return
-    end
-
-    # handle case where no valid email was found
-    unless response
-      flash[alert] = 'Please choose another url'
-      redirect_to :user_index, notice: 'Error while generating a valid email.'
-      return
-    end
-
-    # update the user email with a valid email address
-    @user = User.new(user_params)
-    @user.email = response
-
-    respond_to do |format|
+    if validate_email.success?
+      @user = user(validate_email.email)
       if @user.save
-        format.html { redirect_to :user_index, notice: 'User was successfully created.' }
+        respond_to do |format|
+          format.html { redirect_to :user_index, notice: 'User was successfully created.' }
+        end
       else
-        flash[notice] = @user.errors.full_messages[0]
-        format.html { redirect_to :user_index }
+        redirect_to :user_index, notice: @user.errors.full_messages[0]
       end
+    else
+      flash[:alert] = validate_email.errors['info']
+      redirect_to :user_index
     end
+
   end
+
+
+
 
   private
 
   # Only allow a list of trusted parameters through.
   def user_params
     params.require(:user).permit(:first_name, :last_name, :url)
+  end
+
+  def validate_email
+    EmailValidator.call(user_params[:first_name], user_params[:last_name], user_params[:url])
+  end
+
+  def user(email)
+    @user = User.new(user_params)
+    @user.email = email
+    @user
   end
 end
