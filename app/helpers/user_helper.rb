@@ -47,6 +47,6 @@ module UserHelper
   end
 
   def check_error(result)
-    result.class  == Hash
+    result.class == Hash
   end
 end

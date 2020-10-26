@@ -9,7 +9,6 @@ gem 'simple_form'
 
 gem 'rest-client'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 # Use sqlite3 as the database for Active Record
@@ -39,6 +38,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
   gem 'rubocop'
+  gem 'mocha'
 end
 
 group :production do
@@ -62,7 +62,7 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
   gem 'shoulda-matchers', '~> 4.0'
-   gem 'database_cleaner'
+  gem 'database_cleaner'
   gem 'factory_bot_rails'
 end
 
